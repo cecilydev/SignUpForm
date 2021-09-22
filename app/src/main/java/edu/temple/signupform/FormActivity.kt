@@ -39,8 +39,8 @@ class FormActivity : AppCompatActivity() {
                 complete = false
             }
             if (password.text.toString() == passwordConf.text.toString() && complete) {
-                Toast.makeText(this@FormActivity, ("Welcome, " + name.text + ", to the SignUpForm App"), Toast.LENGTH_LONG).show()
-
+                val message = "Welcome, " + name.text + ", to the SignUpForm App"
+                Toast.makeText(this@FormActivity, message, Toast.LENGTH_SHORT).show()
             } else if (complete) {
                 passwordConf.error = "Password entries do not match"
             }
