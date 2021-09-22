@@ -19,12 +19,32 @@ class FormActivity : AppCompatActivity() {
         val password = findViewById<TextView>(R.id.Password)
         val passwordConf = findViewById<TextView>(R.id.PasswordConfirm)
 
+
         register.setOnClickListener {
-            if (name.text.isEmpty()) name.error="Need to input name"
-            if (email.text.isEmpty()) email.error="Need to input email"
-            if (password.text.isEmpty()) password.error="Need to input password"
-            if (passwordConf.text.isEmpty()) passwordConf.error="Need to reenter password"
-            Toast.makeText(this@FormActivity, "You clicked the button", Toast.LENGTH_SHORT).show()
+            var complete = true
+            if (name.text.isEmpty()){
+                name.error="Need to input name"
+                complete = false
+            }
+            if (email.text.isEmpty()){
+                email.error="Need to input email"
+                complete = false
+            }
+            if (password.text.isEmpty()){
+                password.error="Need to input password"
+                complete = false
+            }
+            if (passwordConf.text.isEmpty()) {
+                passwordConf.error="Need to reenter password"
+                complete = false
+            }
+            if (password.text.toString() == passwordConf.text.toString() && complete) {
+                Toast.makeText(this@FormActivity, ("Welcome, " + name.text + ", to the SignUpForm App"), Toast.LENGTH_LONG).show()
+
+            } else if (complete) {
+                passwordConf.error = "Password entries do not match"
+            }
+
 
         }
 
